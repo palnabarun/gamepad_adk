@@ -2,7 +2,7 @@
 A library for interfacing most USB gamepads with Arduino
 ### Usage
 In the header section of main code, add the following:
-...
+```
 #include <usbhid.h>
 #include <hiduniversal.h>
 #include <usbhub.h>
@@ -22,23 +22,22 @@ USBHub Hub(&Usb);
 HIDUniversal Hid(&Usb);
 JoystickEvents JoyEvents;
 JoystickReportParser Joy(&JoyEvents, debug_flag, &one, &two, &three, &four, &up, &down, &left, &right, &l1, &l2, &l3, &r1, &r2, &r3, &x, &y, &z1, &z2, &rz, &start, &sel);
-...
+```
 
 In the void setup() function,
 
-...
+```
 Serial.begin(115200);
 if (Usb.Init() == -1)
     Serial.println("OSC did not start.");
 delay(200);
 if (!Hid.SetReportParser(0, &Joy))
     ErrorMessage<uint8_t > (PSTR("SetReportParser"), 1);
-...
+```
 
-Whenever the remote values need to be updated, call Usb.Task()
+Whenever the remote values need to be updated, call `Usb.Task()`
 
 The code is based on [USB Host Shield 2.0 Library][https://github.com/felis/USB_Host_Shield_2.0] by [felis][https://github.com/felis/]
 
-...
-&copy; [Nabarun Pal][http://nabarun.in] 2016 GNU GPL v3
-...
+
+> &copy; [Nabarun Pal][http://nabarun.in] 2016 GNU GPL v3
