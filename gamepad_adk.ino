@@ -2,7 +2,6 @@
 #include <hiduniversal.h>
 #include <usbhub.h>
 
-// Satisfy IDE, which only needs to see the include statment in the ino.
 #ifdef dobogusinclude
 #include <spi4teensy3.h>
 #include <SPI.h>
@@ -21,10 +20,6 @@ JoystickReportParser Joy(&JoyEvents, debug_flag, &one, &two, &three, &four, &up,
 
 void setup() {
         Serial.begin(115200);
-#if !defined(__MIPSEL__)
-        while (!Serial); // Wait for serial port to connect - used on Leonardo, Teensy and other boards with built-in USB CDC serial connection
-#endif
-        Serial.println("Start");
 
         if (Usb.Init() == -1)
                 Serial.println("OSC did not start.");
