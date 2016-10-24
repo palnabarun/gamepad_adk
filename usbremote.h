@@ -9,6 +9,7 @@ struct GamePadEventData {
 
 class JoystickEvents {
 public:
+        virtual void SetAllZero(int *up_, int *down_, int *left_, int *right_);
         virtual void OnGamePadChanged(const GamePadEventData *evt, bool debug_flag, int *x_, int *y_, int *z1_, int *z2_, int *rz_);
         virtual void OnHatSwitch(uint8_t hat, bool debug_flag, int *up_, int *down_, int *left_, int *right_);
         virtual void OnButtonUp(uint8_t but_id, bool debug_flag, int *one_, int *two_, int *three_, int *four_, int *l1_, int *l2_, int *l3_, int *r1_, int *r2_, int *r3_, int *start_, int *sel_);

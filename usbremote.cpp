@@ -76,6 +76,13 @@ void JoystickReportParser::Parse(USBHID *hid, bool is_rpt_id, uint8_t len, uint8
         }
 }
 
+void JoystickEvents::SetAllZero(int *up_, int *down_, int *left_, int *right_) {
+  *up_=0;
+  *down_=0;
+  *left=0;
+  *right_=0;
+}
+
 void JoystickEvents::OnGamePadChanged(const GamePadEventData *evt, bool debug_flag, int *x_, int *y_, int *z1_, int *z2_, int *rz_) {
         if(debug_flag) {
           Serial.print("X1: ");
@@ -106,6 +113,50 @@ void JoystickEvents::OnHatSwitch(uint8_t hat, bool debug_flag, int *up_, int *do
           Serial.println("");
         } else {
           Serial.println("DEBUG IS OFF.");          
+        }
+        switch(hat) {
+          case 0:
+            SetAllZero();
+            *up_ = 1;
+            break;
+        case 1:
+            SetAllZero();
+            *up_ = 1;
+            *right_ = 1;
+            break;
+        case 2:
+            SetAllZero();
+            *right_ = 1;
+            break;
+        case 3:
+            SetAllZero();
+            *right_ = 1;
+            *down_ = 1;
+            break;
+        case 4:
+            SetAllZero();
+            *down_ = 1;
+            break;
+        case 5:
+            SetAllZero();
+            *down_ = 1;
+            *left_ = 1;
+            break;
+        case 6:
+            SetAllZero();
+            *left_ = 1;
+            break;
+        case 7:
+            SetAllZero();
+            *up_ = 1;
+            *left_ = 1;
+            break;
+        case 15:
+            SetAllZero();
+            break;
+        default:
+            SetAllZero();
+            break;
         }
 }
 
