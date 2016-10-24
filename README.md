@@ -45,4 +45,4 @@ Whenever the remote values need to be updated, call `Usb.Task()`
 The code is based on [USB Host Shield 2.0 Library](https://github.com/felis/USB_Host_Shield_2.0) by [felis](https://github.com/felis/)
 
 
-> &copy; [Nabarun Pal](http://nabarun.in) 2016 GNU GPL v3
+> &copy; [Nabarun Pal](http://nabarun.in), Team Robocon IITR 2016 GNU GPL v3
